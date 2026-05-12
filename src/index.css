@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+/* ─── Custom Design Tokens ─── */
+:root {
+  --pink: #ff4d8d;
+  --pink-light: #ff79a8;
+  --pink-dark: #d63384;
+  --purple: #9b59b6;
+  --purple-dark: #6c3483;
+  --purple-deep: #1a0a2e;
+  --gold: #f0c674;
+  --gold-soft: #e8b94a;
+  --bg-dark: #0a0a0f;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --glow-pink: 0 0 30px rgba(255, 77, 141, 0.3);
+  --glow-purple: 0 0 30px rgba(155, 89, 182, 0.3);
+}
+
+/* ─── Global Reset & Base ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--pink), var(--purple));
+  border-radius: 10px;
+}
+
+/* ─── Typography ─── */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+.font-body {
+  font-family: 'Poppins', sans-serif;
+}
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ─── Glassmorphism Card ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+}
+
+/* ─── Gradient Backgrounds ─── */
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0d0d1a 100%);
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 30%, #2d1b4e 60%, #1a0a2e 100%);
+}
+
+.bg-gradient-romantic {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 25%, #2a0a3e 50%, #1a0a2e 75%, #0a0a0f 100%);
+}
+
+/* ─── Glow Effects ─── */
+.glow-pink {
+  box-shadow: 0 0 20px rgba(255, 77, 141, 0.2), 0 0 60px rgba(255, 77, 141, 0.1);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.2), 0 0 60px rgba(155, 89, 182, 0.1);
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 20px rgba(255, 77, 141, 0.4), 0 0 40px rgba(255, 77, 141, 0.2);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(240, 198, 116, 0.4), 0 0 40px rgba(240, 198, 116, 0.2);
+}
+
+/* ─── Button Styles ─── */
+.btn-romantic {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 77, 141, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-romantic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 30px rgba(255, 77, 141, 0.5);
+}
+
+.btn-romantic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  border-radius: 50px;
+}
+
+/* ─── Input Styles ─── */
+.input-romantic {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px 20px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-romantic::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.input-romantic:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 20px rgba(255, 77, 141, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Floating Hearts Animation ─── */
+@keyframes floatHeart {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) rotate(10deg) scale(0.8);
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes floatStar {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 77, 141, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 77, 141, 0.4);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ─── Section Spacing ─── */
+.section-padding {
+  padding: 80px 20px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 100px 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 120px 60px;
+  }
+}
